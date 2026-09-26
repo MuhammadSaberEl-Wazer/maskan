@@ -1,0 +1,5 @@
+node_modules/
+.next/
+.demo-chat-media/
+.env*
+!.env.example
