@@ -4,7 +4,7 @@
 
 ## 1. Executive Summary
 
-**Maskan (مسكن)** is an Egypt-wide managed shared-housing business. Maskan is not intended to be a simple property-listing marketplace or a broker. The core proposition is to lease suitable apartments, prepare and furnish them to a consistent standard, then operate them as organized housing with clear contracts, transparent pricing, maintenance, cleaning, support, and resident rules.
+**Maskan (مسكن)** is an Egypt-wide managed-housing business serving both shared-housing residents and families renting complete apartments. Maskan is not intended to be a simple property-listing marketplace or a broker. The core proposition is to lease suitable apartments, prepare and furnish them to a consistent standard, then operate them as organized housing with clear contracts, transparent pricing, maintenance, cleaning, support, and resident rules.
 
 Maskan's customer promise is **Speed, Trust, and Safety**. These three priorities should govern the product, operations, and all customer-facing communication:
 
@@ -12,9 +12,9 @@ Maskan's customer promise is **Speed, Trust, and Safety**. These three prioritie
 2. **Trust:** show rent, deposits, inclusions, and any additional costs before commitment, and make one accountable Maskan team responsible for the resident experience.
 3. **Safety:** verify and document identity, contracts, payments, deposits, maintenance, and operational actions so residents can live with confidence.
 
-The initial model focuses on individual private rooms, shared rooms, and individual beds inside managed residential units. **Full-unit rental is not part of the current model.** It remains a future product direction for family apartments and corporate housing, alongside an asset-light managed-property model. Maskan is the operating company and the resident's contractual counterparty.
+The current model has two distinct rental models: individual private rooms, shared rooms, and beds inside managed shared residences; and complete apartments rented to one family under one contract. A family-apartment price always represents the monthly price of the whole unit, never a per-person or per-bed price. Maskan is the operating company and the resident's contractual counterparty.
 
-**Business category:** Managed Shared Housing / Housing Operations.
+**Business category:** Managed Shared and Family Housing / Housing Operations.
 
 **Current stage:** concept + market validation + Proof of Concept application. Any financial figures in the POC are illustrative demo assumptions, not actual company performance.
 
@@ -49,6 +49,7 @@ Maskan can offer:
 - private rooms;
 - shared rooms;
 - individual beds;
+- complete apartments rented to one family;
 - clearly defined monthly pricing;
 - security deposits;
 - formal Maskan contracts;
@@ -78,6 +79,7 @@ Potential residents include:
 - Egyptians;
 - Arab residents;
 - foreign residents / expatriates.
+- families seeking a complete managed apartment.
 
 A valid identity document is required. The concept does not depend on unnecessarily restrictive occupation or age segmentation beyond legal and operational requirements.
 
@@ -85,7 +87,7 @@ A valid identity document is required. The concept does not depend on unnecessar
 
 - Male and female shared units are strictly separate.
 - Families are not housed inside shared units.
-- Full family apartments may become a separate future product.
+- A family apartment is a separate inventory and contract type, occupied by one family and never mixed with unrelated shared-housing residents.
 
 ---
 
@@ -128,6 +130,15 @@ Target: professionals and potentially expatriates / higher-budget residents.
 
 Do not mix radically different customer propositions in the same apartment. A unit should have a coherent Maskan tier and resident experience.
 
+### Rental model is separate from product tier
+
+`Essential`, `Comfort`, and `Plus` describe the operating standard, furnishing, service level, and price position. They do not describe whether inventory is shared or rented in full.
+
+- **Shared housing:** bookable inventory may be a private room, shared room, or individual bed. Pricing is shown per bookable resident space.
+- **Family apartment:** the complete apartment is one bookable inventory unit for one family under one contract. Pricing is shown for the whole apartment per month.
+- Family apartments must never be presented as shared inventory or priced as a bed.
+- Shared-housing and family-apartment prices must not be compared without accounting for their different price bases.
+
 ---
 
 ## 6. Stay, Pricing and Deposit Logic
@@ -146,6 +157,15 @@ Pricing can improve with longer commitments. A future pricing structure may incl
 - 12 months — strongest long-stay rate.
 
 The exact percentages remain a business decision and should not be hard-coded as final assumptions.
+
+### Price basis
+
+Every displayed price must explicitly state its basis:
+
+- shared housing: per resident space / room / bed, as applicable;
+- family apartment: the entire apartment per month.
+
+The selected price basis must be snapshotted with the booking and contract so later price changes cannot alter an existing agreement.
 
 ### Security deposit
 
@@ -416,7 +436,7 @@ Every potential Maskan property should be modeled before signing.
 
 ### Revenue
 
-`Monthly Revenue = Sum of realized room/bed prices at occupied inventory`
+`Monthly Revenue = Sum of realized room/bed prices + realized whole-unit family-apartment prices`
 
 ### Direct property contribution
 
@@ -472,7 +492,7 @@ The POC should allow an investor/stakeholder to understand within minutes:
 
 1. what Maskan is;
 2. how a resident discovers a unit;
-3. how private/shared inventory is displayed;
+3. how private/shared inventory and full family apartments are clearly distinguished;
 4. how duration and deposit affect a booking;
 5. how a resident interacts with Maskan after moving in;
 6. how Maskan sees occupancy, residents, payments, and maintenance;
@@ -484,18 +504,22 @@ The POC is not intended to claim that Maskan already operates the demo portfolio
 
 ## 18. POC Demo Portfolio
 
-The demo dataset is designed around approximately 18 properties across six Egyptian markets to make the nationwide positioning visible in the product:
+The current demo dataset contains 18 properties limited to Greater Cairo so the first operating story is geographically credible and operationally dense:
 
-- New Cairo: 4;
-- Nasr City: 4;
-- Alexandria: 3;
-- Mansoura: 3;
-- Assiut: 2;
-- Tanta: 2.
+- New Cairo: 5;
+- Nasr City: 2;
+- Heliopolis: 3;
+- Shorouk: 2;
+- Obour: 2;
+- 6th of October: 2;
+- Sheikh Zayed: 1;
+- Maadi: 1.
 
-Target demo inventory: roughly 110–130 beds with illustrative occupancy around 80–85%. The dataset should include male and female units, all three product tiers, different room structures, different booking durations, deposits, paid/late payments, available/reserved/occupied beds, and maintenance requests in multiple states.
+The portfolio contains 12 shared-housing properties and 6 complete family apartments. It includes male and female shared units, all three product tiers, private/shared/full-unit inventory, different booking durations, deposits, paid/late payment examples, availability states, and maintenance requests.
 
-Example dashboard figures such as 18 properties, 120 beds, 83% occupancy, or EGP 450K monthly revenue are **illustrative POC data only**.
+This Greater Cairo restriction applies only to the current demo data and pilot operating focus. The brand, product architecture, and long-term target remain Egypt-wide; later clusters should be added only when demand and unit economics support them.
+
+All dashboard figures, prices, occupancy, and revenue values are **illustrative POC data only**.
 
 ---
 
@@ -528,7 +552,7 @@ The property itself should be the visual hero.
 Potential future directions include:
 
 - additional operating clusters across Egyptian cities where demand supports the model;
-- full family apartments as a separate product;
+- expansion of the complete-family-apartment portfolio;
 - corporate housing;
 - owner-managed/revenue-share inventory;
 - standardized Maskan furniture production;
@@ -585,9 +609,12 @@ When implementing software, preserve these rules unless the business reference i
 17. Trust: pricing, deposits, included services, and the responsible Maskan team must be clear before commitment.
 18. Safety: identity, contracts, payments, deposits, and support activity must be documented and access-controlled.
 19. Maskan is positioned for Egypt as a whole; pilot clusters do not limit the brand to one city.
+20. Rental model and product tier are separate dimensions.
+21. A family apartment is one whole-unit booking, and its displayed monthly price covers the complete apartment.
+22. The current demo dataset is limited to Greater Cairo while the target market remains Egypt-wide.
 
 ---
 
 ## 23. One-Sentence Positioning
 
-**Maskan is an Egypt-wide managed shared-housing operator built around Speed, Trust, and Safety, helping residents move into furnished, professionally managed units through clear pricing and documented processes.**
+**Maskan is an Egypt-wide managed-housing operator built around Speed, Trust, and Safety, helping individuals and families move into furnished, professionally managed homes through clear pricing and documented processes.**

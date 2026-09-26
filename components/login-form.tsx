@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { ArrowRight, BriefcaseBusiness, KeyRound, ShieldCheck, UserRound } from "lucide-react";
 import type { DemoAccount, Locale } from "@/lib/demo-accounts";
 import { roleLabels } from "@/lib/demo-accounts";
+import { areaLabel } from "@/lib/i18n";
 import { Input } from "@/components/ui/input";
 
 export function LoginForm({
@@ -103,7 +104,7 @@ export function LoginForm({
                   <code>{account.email}</code>
                   <code>{account.password}</code>
                 </div>
-                {account.area && <p className="mt-3 text-xs font-bold text-[var(--brand)]">{ar ? "النطاق: مدينة نصر" : `Scope: ${account.area}`}</p>}
+                {account.area && <p className="mt-3 text-xs font-bold text-[var(--brand)]">{ar ? `النطاق: ${areaLabel(account.area, locale)}` : `Scope: ${account.area}`}</p>}
                 <p className="mt-2 text-xs text-[var(--muted)]">
                   {ar ? "لغة الحساب: " : "Account language: "}
                   {account.preferredLanguage === "ar" ? "العربية" : "English"}

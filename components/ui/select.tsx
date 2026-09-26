@@ -12,7 +12,7 @@ export function SelectTrigger({ className, children, ...props }: React.Component
   return (
     <SelectPrimitive.Trigger
       className={cn(
-        "flex h-12 w-full items-center justify-between gap-3 rounded-md border border-[#cfd6d1] bg-white px-3.5 text-sm font-semibold text-[var(--foreground)] shadow-[0_1px_2px_rgba(20,45,32,.04)] outline-none transition-[border-color,box-shadow] hover:border-[#aebbb3] focus:border-[var(--brand)] focus:ring-4 focus:ring-[rgba(40,89,67,.1)] data-[placeholder]:text-[#929b95] disabled:cursor-not-allowed disabled:bg-[#f1f3f1] [&>span]:truncate",
+        "flex h-12 w-full items-center justify-between gap-3 rounded-md border border-[#cfd6d1] bg-white px-3.5 text-start text-sm font-semibold text-[var(--foreground)] shadow-[0_1px_2px_rgba(20,45,32,.04)] outline-none transition-[border-color,box-shadow] hover:border-[#aebbb3] focus:border-[var(--brand)] focus:ring-4 focus:ring-[rgba(40,89,67,.1)] data-[placeholder]:text-[#929b95] disabled:cursor-not-allowed disabled:bg-[#f1f3f1] [&>span]:truncate [&>span]:text-start",
         className,
       )}
       {...props}
@@ -47,7 +47,7 @@ export function SelectItem({ className, children, ...props }: React.ComponentPro
   return (
     <SelectPrimitive.Item
       className={cn(
-        "relative flex min-h-10 cursor-default select-none items-center rounded px-9 py-2 text-sm outline-none data-[disabled]:pointer-events-none data-[disabled]:opacity-40 data-[highlighted]:bg-[#edf3ef] data-[highlighted]:text-[var(--brand-dark)]",
+        "relative flex min-h-10 cursor-default select-none items-center rounded px-9 py-2 text-start text-sm outline-none data-[disabled]:pointer-events-none data-[disabled]:opacity-40 data-[highlighted]:bg-[#edf3ef] data-[highlighted]:text-[var(--brand-dark)]",
         className,
       )}
       {...props}

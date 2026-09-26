@@ -47,7 +47,7 @@ export const demoAccounts: DemoAccount[] = [
     preferredLanguage: "ar",
     gender: "female",
     isUnitRepresentative: false,
-    area: "Alexandria",
+    area: "Heliopolis",
   },
   {
     id: "demo-manager-youssef",

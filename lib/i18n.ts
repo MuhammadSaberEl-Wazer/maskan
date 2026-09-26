@@ -1,4 +1,4 @@
-import type { ProductTier, RoomKind, StructureType, UnitGender } from "@/lib/data";
+import type { ProductTier, RentalModel, RoomKind, StructureType, UnitGender } from "@/lib/data";
 import type { Locale } from "@/lib/demo-accounts";
 
 export { type Locale } from "@/lib/demo-accounts";
@@ -11,10 +11,12 @@ const areaAr: Record<string, string> = {
   "All areas": "كل المناطق",
   "New Cairo": "القاهرة الجديدة",
   "Nasr City": "مدينة نصر",
-  Alexandria: "الإسكندرية",
-  Mansoura: "المنصورة",
-  Assiut: "أسيوط",
-  Tanta: "طنطا",
+  Heliopolis: "مصر الجديدة",
+  "El Shorouk": "الشروق",
+  "El Obour": "العبور",
+  "6th of October": "6 أكتوبر",
+  "Sheikh Zayed": "الشيخ زايد",
+  Maadi: "المعادي",
 };
 
 const propertyAr: Record<string, string> = {
@@ -24,18 +26,18 @@ const propertyAr: Record<string, string> = {
   "rehab-gate": "بوابة الرحاب",
   "nasr-city-park": "سكن حديقة مدينة نصر",
   "makram-residence": "سكن مكرم",
-  "rabaah-house": "وحدة رابعة",
-  "zahraa-court": "دار زهراء مدينة نصر",
-  "smouha-court": "دار سموحة",
-  "kafr-abdo-home": "وحدة كفر عبده",
-  "sidi-gaber-house": "وحدة سيدي جابر",
-  "mansoura-garden": "حدائق المنصورة",
-  "mansoura-university-residence": "سكن جامعة المنصورة",
-  "mansoura-central": "سكن وسط المنصورة",
-  "assiut-nile": "وحدة النيل أسيوط",
-  "assiut-university-house": "وحدة جامعة أسيوط",
-  "tanta-central": "سكن وسط طنطا",
-  "tanta-gardens": "حدائق طنطا",
+  "roxy-residence": "سكن روكسي",
+  "sheraton-house": "وحدة شيراتون",
+  "shorouk-campus": "سكن جامعات الشروق",
+  "obour-central": "سكن العبور",
+  "october-campus": "سكن جامعات أكتوبر",
+  "zayed-professionals": "سكن محترفي زايد",
+  "lotus-family-home": "شقة أسرة اللوتس",
+  "heliopolis-family-suite": "شقة أسرة مصر الجديدة",
+  "shorouk-family-residence": "شقة أسرة الشروق",
+  "obour-family-home": "شقة أسرة العبور",
+  "october-family-garden": "شقة أسرة أكتوبر",
+  "maadi-family-court": "شقة أسرة المعادي",
 };
 
 const neighborhoodAr: Record<string, string> = {
@@ -45,16 +47,15 @@ const neighborhoodAr: Record<string, string> = {
   "Al Rehab": "الرحاب",
   "7th District": "الحي السابع",
   "Makram Ebeid": "مكرم عبيد",
-  "6th District": "الحي السادس",
-  "Zahraa Nasr City": "زهراء مدينة نصر",
-  Smouha: "سموحة",
-  "Kafr Abdo": "كفر عبده",
-  "Sidi Gaber": "سيدي جابر",
-  "El Mashaya": "المشاية",
-  "El Gomhoria": "الجمهورية",
-  "Stadium District": "منطقة الاستاد",
+  Roxy: "روكسي",
+  Sheraton: "شيراتون",
   "University District": "منطقة الجامعات",
-  "City Center": "وسط المدينة",
+  "First District": "الحي الأول",
+  "Third District": "الحي الثالث",
+  "Fifth District": "الحي الخامس",
+  "8th District": "الحي الثامن",
+  Korba: "الكوربة",
+  Degla: "دجلة",
 };
 
 const amenityAr: Record<string, string> = {
@@ -76,6 +77,9 @@ const amenityAr: Record<string, string> = {
   Laundry: "غسيل ملابس",
   "Garden view": "إطلالة على حديقة",
   "Premium furnishing": "فرش مميز",
+  "Family ready": "مجهزة للأسرة",
+  Parking: "مكان للسيارة",
+  Security: "أمن",
 };
 
 export function areaLabel(value: string, locale: Locale) {
@@ -99,17 +103,22 @@ export function tierLabel(value: ProductTier, locale: Locale) {
   return { Essential: "اقتصادي", Comfort: "كومفورت", Plus: "بلس" }[value];
 }
 
+export function rentalModelLabel(value: RentalModel, locale: Locale) {
+  if (locale === "en") return value === "Family apartment" ? "Full family apartment" : "Shared housing";
+  return value === "Family apartment" ? "وحدة كاملة لأسرة" : "سكن مشترك";
+}
+
 export function genderLabel(value: UnitGender, locale: Locale) {
   if (locale === "en") return value;
-  return value === "Men" ? "رجال" : "سيدات";
+  return { Men: "رجال", Women: "سيدات", Families: "أسر" }[value];
 }
 
 export function roomKindLabel(value: RoomKind, locale: Locale) {
   if (locale === "en") return value;
-  return value === "Private room" ? "أوضة خاصة" : "أوضة مشتركة";
+  return { "Private room": "أوضة خاصة", "Shared room": "أوضة مشتركة", "Full unit": "وحدة كاملة" }[value];
 }
 
 export function structureLabel(value: StructureType, locale: Locale) {
   if (locale === "en") return value;
-  return value === "Original room" ? "أوضة أصلية" : "أوضة مقسّمة";
+  return { "Original room": "أوضة أصلية", "Partitioned room": "أوضة مقسّمة", "Entire apartment": "شقة كاملة" }[value];
 }

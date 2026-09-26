@@ -12,7 +12,7 @@ export default async function LoginPage({ searchParams }: { searchParams: Promis
       <div className="mb-7 flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
         <div>
           <p className="eyebrow">{ar ? "بيئة تجربة آمنة" : "Safe demo environment"}</p>
-          <h1 className="mt-2 text-3xl font-bold md:text-4xl">{ar ? "اختار دورك وادخل" : "Choose a role and sign in"}</h1>
+          <h1 className="mt-2 text-3xl font-bold md:text-4xl">{ar ? "اختر دورك وادخل" : "Choose a role and sign in"}</h1>
           <p className="mt-3 max-w-2xl leading-7 text-[var(--muted)]">{ar ? "الحسابات دي للعرض فقط، وكل دور بيفتح الصلاحيات والشاشات المناسبة له." : "These accounts are for demonstration only. Each role opens its matching permissions and screens."}</p>
         </div>
         <Link href="/register" className="button-secondary">{ar ? "إنشاء حساب مقيم" : "Create resident account"}</Link>

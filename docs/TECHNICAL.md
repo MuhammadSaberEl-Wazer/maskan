@@ -4,7 +4,7 @@
 
 ## 1. Project Goal
 
-Build a functional, investor-ready Proof of Concept for **Maskan**, an Egypt-wide managed shared-housing operator. The POC must demonstrate both the customer journey and Maskan's operating/admin view using realistic demo data.
+Build a functional, investor-ready Proof of Concept for **Maskan**, an Egypt-wide managed-housing operator supporting both shared housing and complete family apartments. The POC must demonstrate both the customer journey and Maskan's operating/admin view using realistic demo data.
 
 This is a **Next.js application**, not a standalone Vite/React SPA. Next.js itself uses React internally, but the framework and project structure must remain Next.js.
 
@@ -149,7 +149,7 @@ Home
 → Explore
 → Filter/search
 → Property Details
-→ Select Room/Bed
+→ Select Room/Bed or Complete Family Unit
 → Login/Register if needed
 → Stay duration + move-in
 → Resident details
@@ -162,9 +162,10 @@ Home
 Suggested Explore filters:
 
 - area;
+- rental model: shared housing / complete family apartment;
 - gender;
 - Maskan tier;
-- private/shared;
+- private/shared/full unit;
 - price;
 - available now.
 
@@ -312,8 +313,10 @@ Area
 └── Property
     ├── Property Images
     ├── Amenities
-    └── Room
-        └── Bed
+    └── Bookable Inventory
+        ├── Room
+        │   └── Bed/Slot
+        └── Complete Family Unit
             └── Booking
                 ├── Contract
                 └── Payments
@@ -321,9 +324,9 @@ Area
 
 Resident data lives in `profiles`. Maintenance links back to the relevant resident/property and optionally room/bed.
 
-### Why Bed is the inventory unit
+### Bookable inventory rule
 
-The smallest bookable inventory unit is a bed/slot. A private room can internally have exactly one bed record. This keeps booking/availability logic consistent across private and shared rooms.
+For shared housing, the smallest bookable inventory unit is a bed/slot. A private room can internally have exactly one slot. A family apartment is also represented by one full-unit slot in the current POC so booking and availability remain consistent, but it must carry a `full_unit` kind and a whole-unit price basis. It must never be displayed or reported as a bed.
 
 ---
 
@@ -357,9 +360,19 @@ Current enum concepts include:
 - `unit_gender`: `male | female`
 - `bed_status`: `available | reserved | occupied | maintenance`
 
+The next schema migration must add the rental semantics now represented in local TypeScript data:
+
+- `rental_model`: `shared_housing | family_apartment`;
+- `inventory_kind`: `private_room | shared_bed | full_unit`;
+- `price_basis`: `resident_space | room | full_unit`;
+- optional family-unit bedroom and bathroom counts;
+- a constraint requiring family apartments to use `full_unit` inventory and whole-unit pricing.
+
+`product_type` remains independent from `rental_model`: Essential, Comfort, and Plus describe the service standard, not the occupancy model.
+
 ### Important schema behavior
 
-A booking stores a **snapshot** of `monthly_price` and `deposit_amount`. Do not rely solely on the current room price after a booking has been created; historical agreements must remain stable when pricing changes.
+A booking stores a **snapshot** of `monthly_price`, `deposit_amount`, and `price_basis`. Do not rely solely on the current room or unit price after a booking has been created; historical agreements must remain stable when pricing changes.
 
 ### Schema evolution
 
@@ -481,12 +494,12 @@ The POC should eventually seed realistic data into Supabase rather than depend p
 Target portfolio:
 
 - 18 properties;
-- six areas;
-- approximately 110–130 beds;
-- illustrative occupancy around 80–85%;
+- eight Greater Cairo areas;
+- 12 shared-housing properties and 6 complete family apartments;
+- 91 illustrative booking slots in the current local dataset (shared beds plus full units);
 - Essential, Comfort, Plus;
-- male/female units;
-- private/shared rooms;
+- male/female shared units and family-only complete apartments;
+- private/shared rooms and full units;
 - original/partition rooms;
 - multiple duration/pricing rules;
 - residents and bookings;
@@ -496,12 +509,16 @@ Target portfolio:
 
 Approximate property distribution:
 
-- New Cairo: 4
-- Nasr City: 4
-- Alexandria: 3
-- Mansoura: 3
-- Assiut: 2
-- Tanta: 2
+- New Cairo: 5
+- Nasr City: 2
+- Heliopolis: 3
+- Shorouk: 2
+- Obour: 2
+- 6th of October: 2
+- Sheikh Zayed: 1
+- Maadi: 1
+
+This location limit is a current demo/pilot-data decision, not a product boundary. The target architecture and brand remain Egypt-wide.
 
 Dummy data must be clearly non-production/demo data.
 
@@ -516,10 +533,10 @@ At the time this document was created, the repository contains an early POC shel
 - Tailwind CSS;
 - Supabase client bootstrap;
 - initial Supabase SQL schema;
-- a centralized local illustrative portfolio of 18 properties and 120 beds;
+- a centralized local illustrative Greater Cairo portfolio of 18 properties: 12 shared residences and 6 complete family apartments;
 - a property-first Home experience with search entry points;
-- interactive Explore filters for area, gender, tier, room type, price, and availability;
-- Property Details with an interactive keyboard-accessible image lightbox, zoom/navigation controls, amenities, room/bed inventory, and duration pricing context;
+- interactive Explore filters for rental model, area, gender where relevant, tier, room/full-unit type, price, and availability;
+- Property Details with an interactive keyboard-accessible image lightbox, zoom/navigation controls, amenities, room/bed/full-unit inventory, and explicit price-basis context;
 - an interactive demo booking flow with price snapshots and a separately displayed deposit;
 - My Maskan resident views for stay information, payments, deposit, contract, support, cleaning, and maintenance workflow;
 - an operations dashboard covering occupancy, collections, outstanding payments, contracts, clusters, properties, and maintenance.
@@ -551,7 +568,9 @@ The local POC includes a functional, cookie-based demo authentication layer so t
 
 Arabic (`ar`) is the default locale. A user's preferred language is part of the demo session and the future `profiles` record. Switching language updates both the locale cookie and the active demo session. English (`en`) remains fully available.
 
-The current interface is nationally positioned for Egypt and uses natural Egyptian Arabic. Cairo is one set of pilot research locations, not the limit of the brand or product. Arabic typography uses the Cairo font. Shared form controls use styled input/textarea primitives and Radix Select for consistent keyboard-friendly menus in both RTL and LTR layouts.
+The current interface is nationally positioned for Egypt and uses natural Egyptian Arabic. The current demo inventory is intentionally limited to Greater Cairo for operational focus; this is not the limit of the brand or product. Arabic typography uses the Cairo font. Shared form controls use styled input/textarea primitives and Radix Select for consistent keyboard-friendly menus in both RTL and LTR layouts.
+
+The home search uses controlled rental-model, area, move-in-date, and stay-length fields. The full date input opens the browser date picker, and one reset action clears all selections without reloading the page.
 
 The login page displays these test accounts and provides an explicit **Demo sign in / دخول ديمو** action:
 
@@ -578,7 +597,7 @@ The full local demo cycle is:
 
 ```text
 Explore
-→ Select a room/bed
+→ Select a room/bed or complete family unit
 → Sign in or register a demo resident
 → Confirm a demo booking
 → View the stay, payment, deposit, and contract in My Maskan
@@ -600,7 +619,7 @@ Do not mistake current local data for the final architecture.
 1. Verify/install shadcn/ui properly and establish reusable design tokens/components.
 2. Create Supabase project/environment configuration.
 3. Convert the schema into clean migrations and add indexes/constraints where required.
-4. Add seed data for areas/properties/rooms/beds/images/amenities/pricing.
+4. Add seed data for areas/properties/rooms/beds/full units/images/amenities/pricing.
 5. Replace local Explore/Property data with Supabase reads.
 6. Implement Supabase Auth and `profiles` creation.
 7. Implement booking flow and price snapshot logic.
