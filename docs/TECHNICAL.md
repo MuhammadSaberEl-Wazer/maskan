@@ -570,7 +570,7 @@ Arabic (`ar`) is the default locale. A user's preferred language is part of the 
 
 The current interface is nationally positioned for Egypt and uses natural Egyptian Arabic. The current demo inventory is intentionally limited to Greater Cairo for operational focus; this is not the limit of the brand or product. Arabic typography uses the Cairo font. Shared form controls use styled input/textarea primitives and Radix Select for consistent keyboard-friendly menus in both RTL and LTR layouts.
 
-The home search uses controlled rental-model, area, move-in-date, and stay-length fields. On mobile, the search surface visually blends with the hero, Radix Select triggers are not nested inside labels, touch targets are at least 44px high, and the native date input is allowed to open its picker without a duplicate programmatic `showPicker()` call. One reset action clears all selections without reloading the page.
+The home search uses controlled rental-model, area, move-in-date, and stay-length fields. On mobile, all four filters remain visible in a compact two-column glass grid that blends with the hero. Radix Select triggers are not nested inside labels, touch targets remain at least 44px high, and the native date input opens without a duplicate programmatic `showPicker()` call. One reset action clears all selections without reloading the page.
 
 The login page displays these test accounts and provides an explicit **Demo sign in / دخول ديمو** action:
 

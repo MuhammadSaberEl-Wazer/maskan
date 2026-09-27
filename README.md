@@ -1,6 +1,6 @@
 # Maskan POC
 
-Investor-ready Proof of Concept for **Maskan (مسكن)** — an Egypt-wide managed shared-housing operator built around speed, trust, and safety.
+Investor-ready Proof of Concept for **Maskan (مسكن)** — an Egypt-wide managed-housing operator for shared residences and complete family apartments, built around speed, trust, and safety.
 
 ## Stack
 
@@ -44,6 +44,6 @@ More target routes and flows are documented in `docs/TECHNICAL.md`.
 
 ## Current State
 
-The repository is an early POC shell. It currently uses local illustrative data for immediate UI rendering while the Supabase schema is prepared for the integration pass. The intended next phase is to seed Supabase and replace local data with real Supabase reads/auth/operations.
+The repository contains a functional end-to-end POC using local illustrative data and signed demo sessions. The Supabase schema remains a starting point for the production integration pass. The intended next phase is to migrate the current rental model into versioned Supabase migrations, seed the portfolio, and replace local data and demo authentication with real database reads, Auth, RLS, and operations.
 
 All portfolio, occupancy, resident, payment, and financial values in the POC are **dummy / illustrative data**, not actual Maskan operating results.
